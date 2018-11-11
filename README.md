@@ -1,8 +1,8 @@
-# Instructions for Linux Server Configuration
+# Kyle's Linux server configuration
 
 Linux Server setup for Fullstack Nanodegree project. 
 
-## Getting Started
+## Logging into the server
 Instructions for signing into the linux server with "grader" user access and a defined list of installs that are currently making the system operate.
 
 IP Address: 34.229.24.54
