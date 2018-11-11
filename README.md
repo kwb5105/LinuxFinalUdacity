@@ -5,6 +5,8 @@ Linux Server setup for Fullstack Nanodegree project.
 ## Logging into the server
 Instructions for signing into the linux server with "grader" user access and a defined list of installs that are currently making the system operate.
 
+ServerName: catalog.34.229.24.54
+ServerAlias: catalog.34.229.24.54.xip.io
 IP Address: 34.229.24.54
 
 ## log into server as grader
@@ -132,8 +134,8 @@ IP Address: 34.229.24.54
     `sudo nano /etc/apache2/sites-available/catalog.conf`
     DETAILS:
     <VirtualHost *:80>
-        ServerName 34.229.24.54
-        ServerAlias 34.229.24.54.xip.io
+        ServerName catalog.34.229.24.54
+        ServerAlias catalog.34.229.24.54.xip.io
         ServerAdmin admin@34.229.24.54
         WSGIScriptAlias / /var/www/catalog/catalog/vagrant/catalog/catalog.wsgi
         <Directory /var/www/catalog/catalog/>
