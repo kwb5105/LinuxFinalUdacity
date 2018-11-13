@@ -155,4 +155,4 @@ Instructions for signing into the linux server with "grader" user access and a d
     </VirtualHost>
 
 
-# Note, I have referenced the github readme file of Angela Carpio while setting up and troubleshooting my application. #
+### Note, I have referenced the github readme file of Angela Carpio while setting up and troubleshooting my application. ###
