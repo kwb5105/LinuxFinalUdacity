@@ -5,9 +5,10 @@ Linux Server setup for Fullstack Nanodegree project.
 ## Logging into the server
 Instructions for signing into the linux server with "grader" user access and a defined list of installs that are currently making the system operate.
 
-ServerName: catalog.34.229.24.54
-ServerAlias: catalog.34.229.24.54.xip.io
-IP Address: 34.229.24.54
+- URL: http://catalog.34.229.24.54.xip.io/
+- ServerName: catalog.34.229.24.54
+- ServerAlias: catalog.34.229.24.54.xip.io
+- IP Address: 34.229.24.54
 
 ## log into server as grader
 1. Copy private key provide in the SSH folder of github
@@ -20,10 +21,10 @@ IP Address: 34.229.24.54
 ## Server configurations
 
 1. Installs and updates i've ran.
-    `sudo apt-get update`
-    `sudo apt-get upgrade`
-    `sudo apt-get install finger`
-    `sudo apt-get install apache2`
+   - `sudo apt-get update`
+   - `sudo apt-get upgrade`
+   - `sudo apt-get install finger`
+   - `sudo apt-get install apache2`
     `sudo apt-get install postgresql`
     `sudo apt-get install libapache2-mod-wsgi`
     `sudo apt autoremove`
