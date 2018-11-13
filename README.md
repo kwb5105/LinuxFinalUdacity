@@ -25,62 +25,62 @@ Instructions for signing into the linux server with "grader" user access and a d
    - `sudo apt-get upgrade`
    - `sudo apt-get install finger`
    - `sudo apt-get install apache2`
-    `sudo apt-get install postgresql`
-    `sudo apt-get install libapache2-mod-wsgi`
-    `sudo apt autoremove`
-    `sudo apt-get install git`
-    `sudo apt-get install python-pip`
-    `sudo pip install --upgrade pip`
-    `sudo pip install flask packaging oauth2client redis passlib flask-httpauth`
-    `sudo pip install Flask`
-    `sudo pip install sqlalchemy flask-sqlalchemy psycopg2-binary bleach requests`
-    `sudo apt-get install postgresql `
-    `sudo pip install --upgrade pip`
-    `sudo pip install virtualenv`
-    `sudo apt-get install libpq-dev python-dev`
+   - `sudo apt-get install postgresql`
+   - `sudo apt-get install libapache2-mod-wsgi`
+   - `sudo apt autoremove`
+   - `sudo apt-get install git`
+   - `sudo apt-get install python-pip`
+   - `sudo pip install --upgrade pip`
+   - `sudo pip install flask packaging oauth2client redis passlib flask-httpauth`
+   - `sudo pip install Flask`
+   - `sudo pip install sqlalchemy flask-sqlalchemy psycopg2-binary bleach requests`
+   - `sudo apt-get install postgresql `
+   - `sudo pip install --upgrade pip`
+   - `sudo pip install virtualenv`
+   - `sudo apt-get install libpq-dev python-dev`
     
 2. Set up security settings
-    `sudo nano /etc/ssh/sshd_config` 
+   - `sudo nano /etc/ssh/sshd_config` 
     change port from 22 to 2200
     set PermitRootLogin from prohibit-password to No
 
 
 3. Set up the firewall 
-    `sudo service ssh restart`
-    `sudo ufw allow 2200/tcp`
-    `sudo ufw allow 80/tcp`
-    `sudo ufw allow 123/udp`
-    `sudo ufw default deny incoming`
-    `sudo ufw default allow outgoing`
-    `sudo ufw allow ssh`
-    `sudo ufw allow www`
-    `sudo ufw allow ntp`
-    `sudo ufw allow https`
-    `sudo ufw enable`
-    `sudo ufw status`
+   - `sudo service ssh restart`
+   - `sudo ufw allow 2200/tcp`
+   - `sudo ufw allow 80/tcp`
+   - `sudo ufw allow 123/udp`
+   - `sudo ufw default deny incoming`
+   - `sudo ufw default allow outgoing`
+   - `sudo ufw allow ssh`
+   - `sudo ufw allow www`
+   - `sudo ufw allow ntp`
+   - `sudo ufw allow https`
+   - `sudo ufw enable`
+   - `sudo ufw status`
 
 4. Set up the time zone
-    `sudo dpkg-reconfigure tzdata (Select UTC)`
-    `sudo reboot`
+   - `sudo dpkg-reconfigure tzdata (Select UTC)`
+   - `sudo reboot`
 
 5. Set up the 'Grader" user and provided sudo access
-    `sudo adduser grader`
+   - `sudo adduser grader`
     Make a grader file within sudoers
-    `sudo nano /etc/sudoers.d/grader.` 
+   - `sudo nano /etc/sudoers.d/grader.` 
     provide all access:
-    `grader ALL=(ALL:ALL) NOPASSWD:ALL`
+   - `grader ALL=(ALL:ALL) NOPASSWD:ALL`
 
 6. Setting Up SSH for grader.
     Make sure to be logged in as grader:
-    `mkdir .ssh`
-    `sudo nano .ssh/authorized_keys`
+   - `mkdir .ssh`
+   - `sudo nano .ssh/authorized_keys`
     Within file, add in the public key
     sudo chmod 700 .ssh
     sudo chmod 644 .ssh/authorized_keys
     Once set up, need to update the sshd_config:
-    `sudo nano /etc/ssh/sshd_config` 
+   - `sudo nano /etc/ssh/sshd_config` 
     Change PasswordAuthentication No
-    `sudo service ssh restart`
+   - `sudo service ssh restart`
 
 7. Set up the database
     Create postgres database.
@@ -88,38 +88,38 @@ Instructions for signing into the linux server with "grader" user access and a d
     Provide access to user for that database schema
 
 8. Clone catalog project repo from github
-    `cd /var/www`
-    `sudo mkdir catalog`
-    `cd catalog`
-    `git clone https://github.com/kwb5105/fullstack-nanodegree-vm.git catalog`
-    `cd catalog`
+   - `cd /var/www`
+   - `sudo mkdir catalog`
+   - `cd catalog`
+   - `git clone https://github.com/kwb5105/fullstack-nanodegree-vm.git catalog`
+   - `cd catalog`
     Change name of catalog.py to __init__.py
-    `mv catalog.py __init.py__`
+   - `mv catalog.py __init.py__`
 
 9. Change existing sqlite "engine" creates to postgres with user and database along with other .py file updates
    update this line in the following files:
-   engine = create_engine('postgresql://postgres:password@localhost/catalog')
-   `sudo nano database_setup.py`
-   `sudo nano loadCatalogItems.py`
-   `sudo nano __init__.py`
+   *engine = create_engine('postgresql://postgres:password@localhost/catalog')
+  - `sudo nano database_setup.py`
+  - `sudo nano loadCatalogItems.py`
+  - `sudo nano __init__.py`
    within the __init__.py file also update the Client ID folder location:
-   `CLIENT_ID = json.loads(open('/var/www/catalog/catalog/vagrant/catalog/client_secrets.json', 'r').read())['web']['client_id']`
-   Change app.run(host='0.0.0.0', port=5000) >> app.run()
+  - `CLIENT_ID = json.loads(open('/var/www/catalog/catalog/vagrant/catalog/client_secrets.json', 'r').read())['web']['client_id']`
+   *Change app.run(host='0.0.0.0', port=5000) >> app.run()
 
 
 10. Install virtual environment within the catalog folder
-    `sudo virtualenv venv`
-    `source venv/bin/activate`
-    `python -m venv env`
+   - `sudo virtualenv venv`
+   - `source venv/bin/activate`
+   - `python -m venv env`
     Install requirements so i can run database.py and loadCatalogItems.py
-    `sudo python database_setup.py`
-    `sudo python loadCatalogItems.py`
-    `sudo a2ensite catalog`
-    exist out of virtual machine
+   - `sudo python database_setup.py`
+   - `sudo python loadCatalogItems.py`
+   - `sudo a2ensite catalog`
+    exit out of virtual machine
     
     
 12. Create catalog.wsgi file
-    `sudo nano /var/www/catalog/catalog/vagrant/catalog/catalog.wsgi`
+   - `sudo nano /var/www/catalog/catalog/vagrant/catalog/catalog.wsgi`
 
     Details:
     #!/usr/bin/python
@@ -132,7 +132,7 @@ Instructions for signing into the linux server with "grader" user access and a d
     application.secret_key = 'kyles_secret_key''
 
 13. Update apache virtual host data file to reflex folder location and IP information
-    `sudo nano /etc/apache2/sites-available/catalog.conf`
+    - `sudo nano /etc/apache2/sites-available/catalog.conf`
     DETAILS:
     <VirtualHost *:80>
         ServerName catalog.34.229.24.54
@@ -154,4 +154,4 @@ Instructions for signing into the linux server with "grader" user access and a d
     </VirtualHost>
 
 
-## Note, I have referenced the github readme file of Angela Carpio while setting up and troubleshooting my application. ##
+# Note, I have referenced the github readme file of Angela Carpio while setting up and troubleshooting my application. #
