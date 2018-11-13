@@ -132,8 +132,9 @@ Instructions for signing into the linux server with "grader" user access and a d
     application.secret_key = 'kyles_secret_key''
 
 13. Update apache virtual host data file to reflex folder location and IP information
-    - `sudo nano /etc/apache2/sites-available/catalog.conf`
-    DETAILS:
+   - `sudo nano /etc/apache2/sites-available/catalog.conf`
+    
+    Details:
     <VirtualHost *:80>
         ServerName catalog.34.229.24.54
         ServerAlias catalog.34.229.24.54.xip.io
